@@ -22,7 +22,8 @@ export class ColorComponent implements OnInit {
 
   plusOne($event) {
     this.router.navigate([
-      'utilities/color', this.type + 1
-    ]);
+      '../', this.type + 1
+    ]
+    , { relativeTo: this.route });
   }
 }
