@@ -4,12 +4,14 @@ import { CommonModule } from '@angular/common';
 import { ComponentsRoutingModule } from './components-routing.module';
 import { ComponentsComponent } from './components.component';
 import { CardsComponent } from './cards/cards.component';
+import { ButtonsComponent } from './buttons/buttons.component';
 
 
 @NgModule({
   declarations: [
     ComponentsComponent,
-    CardsComponent
+    CardsComponent,
+    ButtonsComponent
   ],
   imports: [
     CommonModule,
