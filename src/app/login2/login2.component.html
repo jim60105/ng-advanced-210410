@@ -61,6 +61,19 @@ errors = {{ form.get('password').errors | json }}
                       <label class="custom-control-label" for="customCheck">Remember Me</label>
                     </div>
                   </div>
+
+                  <section formArrayName="extra">
+                    <section [formGroupName]="i" *ngFor="let g of getFormArray('extra').controls; let i=index">
+                      <div>{{i+1}}</div>
+                      <input type="text" formControlName="name" class="form-control form-control-user" placeholder="姓名">
+                      <input type="text" formControlName="tel" class="form-control form-control-user" placeholder="電話">
+                    </section>
+                  </section>
+
+                  <button class="btn btn-secondary " type="button" (click)="addExtra()">
+                    +
+                  </button>
+
                   <button class="btn btn-primary btn-user btn-block" type="submit">
                     Login
                   </button>

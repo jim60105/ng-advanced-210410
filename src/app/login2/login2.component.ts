@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, FormArray, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './login2.component.html',
@@ -39,8 +39,27 @@ export class Login2Component implements OnInit {
         ]
       }
       ),
-      isRememberMe: true
+      isRememberMe: true,
+      extra: this.fb.array([
+        this.makeExtra(),
+        this.makeExtra()
+      ])
     });
+  }
+
+  makeExtra() {
+    return this.fb.group({
+      name: '',
+      tel: ''
+    })
+  }
+
+  getFormArray(name: string) {
+    return this.form.get(name) as FormArray;
+  }
+
+  addExtra() {
+    this.getFormArray('extra').push(this.makeExtra());
   }
 
   ngOnDestroy(): void {
