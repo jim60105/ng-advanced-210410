@@ -22,11 +22,13 @@
                     <pre>form.value = {{ form.value | json }}</pre>
                     <pre>form.valid = {{form.valid}}</pre>
                     <div class="form-group">
-                      <input type="email" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Email Address..."
-                        [ngModel]="data.email" #mEmail="ngModel" name="email" required email>
-                        <div class="invalid-feedback" *ngIf="(mEmail.invalid && mEmail.errors.required) && mEmail.errors?.email">請輸入email</div>
-                        <pre>{{ data.email | json }}</pre>
-                        <pre>
+                      <input type="email" class="form-control form-control-user" aria-describedby="emailHelp"
+                             placeholder="Enter Email Address..."
+                             [ngModel]="data.email" #mEmail="ngModel" name="email" required email>
+                      <div class="invalid-feedback"
+                           *ngIf="(mEmail.invalid && mEmail.errors.required) && mEmail.errors?.email">請輸入email</div>
+                      <pre>{{ data.email | json }}</pre>
+                      <pre>
 value: {{ mEmail.value | json }}
 pristine: {{ mEmail.pristine | json }}
 dirty: {{ mEmail.dirty | json }}
@@ -42,9 +44,11 @@ errors = {{ mEmail.errors | json }}
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" placeholder="Password"
-                        [ngModel]="data.password" #mPassword="ngModel" name="password" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}">
-                        <div class="invalid-feedback" *ngIf="mPassword.invalid && mPassword.errors.pattern">請輸入8~32字元之大小寫數字</div>
-                        <pre>
+                             [ngModel]="data.password" #mPassword="ngModel" name="password"
+                             pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}">
+                      <div class="invalid-feedback" *ngIf="mPassword.invalid && mPassword.errors.pattern">
+                        請輸入8~32字元之大小寫數字</div>
+                      <pre>
 invalid = {{ mPassword.invalid | json }}
 status = {{ mPassword.status | json }}
 errors = {{ mPassword.errors | json }}
@@ -53,10 +57,16 @@ errors = {{ mPassword.errors | json }}
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
                         <input type="checkbox" class="custom-control-input"
-                        [(ngModel)]="data.isRememberMe" #mIsRememberMe="ngModel" name="isRememberMe">
+                               [(ngModel)]="data.isRememberMe" #mIsRememberMe="ngModel" name="isRememberMe">
                         <label class="custom-control-label" for="customCheck">Remember Me</label>
                       </div>
                     </div>
+
+                    <section ngModelGroup="extra" #mExtra>
+                      <input type="text" class="form-control form-control-user" placeholder="姓名" #mExtraName="ngModel" name="name" ngModel>
+                      <input type="text" class="form-control form-control-user" placeholder="電話" #mExtraTel="ngModel" name="tel" ngModel>
+                    </section>
+
                     <button class="btn btn-primary btn-user btn-block" type="submit">
                       Login
                     </button>
