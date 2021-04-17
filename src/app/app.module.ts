@@ -10,6 +10,7 @@ import { Page2Component } from './page2/page2.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
 import { LayoutComponent } from './layout/layout.component';
+import { Login2Component } from './login2/login2.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LayoutComponent } from './layout/layout.component';
     DashboardComponent,
     LoginComponent,
     LayoutComponent,
+    Login2Component,
   ],
   imports: [
     BrowserModule,
