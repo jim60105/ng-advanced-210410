@@ -15,13 +15,14 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user" #form="ngForm">
+                  <form class="user" #form="ngForm" [class.was-validated]="form.dirty && form.invalid">
                     <pre>data = {{ data | json }}</pre>
                     <pre>form.value = {{ form.value | json }}</pre>
                     <pre>form.valid = {{form.valid}}</pre>
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Email Address..."
-                        [(ngModel)]="data.email" #mEmail="ngModel" name="email" required disabled>
+                        [(ngModel)]="data.email" #mEmail="ngModel" name="email" required email>
+                        <div class="invalid-feedback" *ngIf="(mEmail.invalid || mEmail.errors.required) && mEmail.errors?.email">請輸入email</div>
                         <pre>{{ data.email | json }}</pre>
                         <pre>
 value: {{ mEmail.value | json }}
@@ -39,7 +40,13 @@ errors = {{ mEmail.errors | json }}
                     </div>
                     <div class="form-group">
                       <input type="password" class="form-control form-control-user" placeholder="Password"
-                        [(ngModel)]="data.password" #mPassword="ngModel" name="password">
+                        [(ngModel)]="data.password" #mPassword="ngModel" name="password" pattern="(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}">
+                        <div class="invalid-feedback" *ngIf="mPassword.invalid && mPassword.errors.pattern">請輸入8~32字元之大小寫數字</div>
+                        <pre>
+invalid = {{ mPassword.invalid | json }}
+status = {{ mPassword.status | json }}
+errors = {{ mPassword.errors | json }}
+                        </pre>
                     </div>
                     <div class="form-group">
                       <div class="custom-control custom-checkbox small">
