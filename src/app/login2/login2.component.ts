@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: './login2.component.html',
@@ -25,8 +25,20 @@ export class Login2Component implements OnInit {
     this.oriClass = document.body.classList;
     document.body.classList.add('bg-gradient-primary');
     this.form = this.fb.group({
-      email: 'f@ex',
-      password: 'aaa123FFF',
+      email: new FormControl('f@ex', {
+        validators: [
+          Validators.email,
+          Validators.required
+        ]
+      }
+      ),
+      password: this.fb.control('aaa123FFF', {
+        validators: [
+          Validators.minLength(3),
+          Validators.maxLength(32)
+        ]
+      }
+      ),
       isRememberMe: true
     });
   }
@@ -35,7 +47,7 @@ export class Login2Component implements OnInit {
     document.body.classList.remove('bg-gradient-primary');
   }
 
-  onSubmit(form: NgForm) {
+  onSubmit(form: FormGroup) {
     if (form.valid) {
       console.log('送出表單: ', form.value);
     }
