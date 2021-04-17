@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: './login2.component.html',
@@ -13,13 +13,22 @@ export class Login2Component implements OnInit {
     email: 'f@ex',
     password: 'aaa123FFF',
     isRememberMe: true
-  }
+  };
 
-  constructor() { }
+  form: FormGroup;
+
+  constructor(
+    private fb: FormBuilder
+  ) { }
 
   ngOnInit(): void {
     this.oriClass = document.body.classList;
     document.body.classList.add('bg-gradient-primary');
+    this.form = this.fb.group({
+      email: 'f@ex',
+      password: 'aaa123FFF',
+      isRememberMe: true
+    });
   }
 
   ngOnDestroy(): void {
@@ -28,7 +37,7 @@ export class Login2Component implements OnInit {
 
   onSubmit(form: NgForm) {
     if (form.valid) {
-      console.log('送出表單: ',form.value);
+      console.log('送出表單: ', form.value);
     }
   }
 
