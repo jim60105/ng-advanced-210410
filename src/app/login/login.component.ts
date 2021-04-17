@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   templateUrl: './login.component.html',
@@ -22,6 +23,12 @@ export class LoginComponent implements OnInit,OnDestroy {
 
   ngOnDestroy(): void {
     document.body.classList.remove('bg-gradient-primary');
+  }
+
+  onSubmit(form: NgForm) {
+    if (form.valid) {
+      console.log('送出表單: ',form.value);
+    }
   }
 
 }

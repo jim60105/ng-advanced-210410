@@ -15,14 +15,16 @@
                   <div class="text-center">
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
-                  <form class="user" #form="ngForm" [class.was-validated]="form.dirty && form.invalid">
+
+                  <form class="user" #form="ngForm" [class.was-validated]="form.dirty && form.invalid"
+                        (ngSubmit)="onSubmit(form)">
                     <pre>data = {{ data | json }}</pre>
                     <pre>form.value = {{ form.value | json }}</pre>
                     <pre>form.valid = {{form.valid}}</pre>
                     <div class="form-group">
                       <input type="email" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Email Address..."
                         [(ngModel)]="data.email" #mEmail="ngModel" name="email" required email>
-                        <div class="invalid-feedback" *ngIf="(mEmail.invalid || mEmail.errors.required) && mEmail.errors?.email">請輸入email</div>
+                        <div class="invalid-feedback" *ngIf="(mEmail.invalid && mEmail.errors.required) && mEmail.errors?.email">請輸入email</div>
                         <pre>{{ data.email | json }}</pre>
                         <pre>
 value: {{ mEmail.value | json }}
