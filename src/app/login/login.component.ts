@@ -9,8 +9,8 @@ export class LoginComponent implements OnInit,OnDestroy {
   oriClass: DOMTokenList;
 
   data = {
-    email: '',
-    password: '',
+    email: 'f@ex',
+    password: 'aaa123FFF',
     isRememberMe: true
   }
 
